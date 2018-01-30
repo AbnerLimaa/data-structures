@@ -2,13 +2,24 @@
 
 namespace DataStructures
 {
+	
+	/* within this project I've made the following statements:
+       		1 - returns 0 by treemin and treemax if there is no key on the binary search tree
+       		2 - returns NULL by iotwalk if there is no key on the binary search tree
+       		3 - returns 0 if search can't find the key
+       		4 - returns 0 by sucessor and predecessor if there is no sucessor/predecessor of the desired key
+       		5 - only inserts if the key isn't on the tree or is not 0
+       		6 - returns 0 by delete if the key isn't on the tree */
+	
 	public class BinarySearchTree
 	{
 		private Node root;
 		private Int32 size;
 
+		//create a new binary search tree
 		public BinarySearchTree() { size = 0; }
 
+		//return the minimum key stored on the binary search tree
 		public Int32 TreeMin()
 		{
 			if (root == null)
@@ -19,6 +30,7 @@ namespace DataStructures
 			return node.Key;
 		}
 
+		//return the maximum key stored on the binary search tree
 		public Int32 TreeMax()
 		{
 			if (root == null)
@@ -29,6 +41,7 @@ namespace DataStructures
 			return node.Key;
 		}
 
+		//return an array with the keys of the binary search tree in ascending order
 		public Int32[] InOrderTreeWalk()
 		{
 			if (root == null)
@@ -43,6 +56,7 @@ namespace DataStructures
 			return numbers;
 		}
 
+		//return the sucessor of a key inside the binary search tree
 		public Int32 Sucessor(Int32 key)
 		{
 			Node node = SearchNode(key);
@@ -66,6 +80,7 @@ namespace DataStructures
 			return 0;
 		}
 
+		//return the predecessor of a key inside the binary search tree
 		public Int32 Predecessor(Int32 key)
 		{
 			Node node = SearchNode(key);
@@ -89,6 +104,7 @@ namespace DataStructures
 			return 0;
 		}
 
+		//insert a key on the binary search tree
 		public void Insert(Int32 key)
 		{
 			if (key != 0 && SearchNode(key) == null)
@@ -116,6 +132,7 @@ namespace DataStructures
 			}
 		}
 
+		//makes an inside operation to switch the node u with node v, used by the deletion algorithm
 		private void Transplant(Node u, Node v)
 		{
 			if (u != null)
@@ -131,6 +148,7 @@ namespace DataStructures
 			}
 		}
 
+		//delete a key from the binary search tree
 		public Int32 Delete(Int32 key)
 		{
 			Node node = SearchNode(key);
@@ -159,7 +177,8 @@ namespace DataStructures
 			size--;
 			return remKey;
 		}
-
+		
+		//search for a key inside the binary search tree
 		public Boolean Search(Int32 key)
 		{
 			if (SearchNode(key) != null)
@@ -167,6 +186,7 @@ namespace DataStructures
 			return false;
 		}
 
+		//return the Node if it is on the binary search tree or NULL if it isn't 
 		private Node SearchNode(Int32 key)
 		{
 			if (key == 0 || root == null)
