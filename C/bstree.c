@@ -219,7 +219,7 @@ void bsinsert(bstree *bs, int key)
     }
 }
 
-//makes an inside operation to switch the node u by node v, used by the deletion algorithm
+//makes an inside operation to switch the node u with node v, used by the deletion algorithm
 void transplant(bstree *bs, node *u, node *v)
 {
     if(bs != NULL && u != NULL)
