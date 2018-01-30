@@ -59,7 +59,7 @@ void freestk(stack *stk)
     }
 }
 
-//add a new node to the stack
+//add a key to the stack
 void push(stack *stk, int key)
 {
     if(stk != NULL)
@@ -78,7 +78,7 @@ void push(stack *stk, int key)
     }
 }
 
-//remove a node from the stack
+//remove a key from the stack
 int pop(stack *stk)
 {
     if(stkepty(stk))
