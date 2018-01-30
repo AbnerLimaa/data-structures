@@ -4,6 +4,7 @@
 
 typedef struct node node;
 
+//defines a binary search tree node
 struct node
 {
     int key;
@@ -12,12 +13,14 @@ struct node
     node *right;
 };
 
+//defines a binary search tree
 struct bstree
 {
     node *root;
     int size;
 };
 
+//dynamically create a new node
 node *newnd()
 {
     node *nd = (node*)malloc(sizeof(node));
@@ -29,12 +32,14 @@ node *newnd()
     return nd;
 }
 
+//free the dynamically created node
 void freend(node *nd)
 {
     if(nd != NULL)
         free(nd);
 }
 
+//dynamically create a new binary search tree
 bstree *newbstree()
 {
     bstree *bs = (bstree*)malloc(sizeof(bstree));
@@ -45,6 +50,7 @@ bstree *newbstree()
     return bs;
 }
 
+//free the dynamically created binary search tree
 void freebstree(bstree *bs)
 {
     if(bs != NULL)
@@ -56,6 +62,7 @@ void freebstree(bstree *bs)
     }
 }
 
+//return the minimum key stored on the binary search tree
 int treemin(bstree *bs)
 {
     if(bs == NULL || bs->root == NULL)
@@ -66,6 +73,7 @@ int treemin(bstree *bs)
     return nd->key;
 }
 
+//return the maximum key stored on the binary search tree
 int treemax(bstree *bs)
 {
     if(bs == NULL || bs->root == NULL)
@@ -76,6 +84,7 @@ int treemax(bstree *bs)
     return nd->key;
 }
 
+//return an array with the keys of the binary search tree in ascending order
 int *iotwalk(bstree *bs)
 {
     if(bs == NULL || bs->root == NULL)
@@ -94,6 +103,7 @@ int *iotwalk(bstree *bs)
     return array;
 }
 
+//search for a key inside the binary search tree
 int bssearch(bstree *bs, int key)
 {
     if(bs == NULL || bs->root == NULL || key == 0)
@@ -109,6 +119,7 @@ int bssearch(bstree *bs, int key)
     return 0;
 }
 
+//return the sucessor of a key inside the binary search tree
 int sucessor(bstree *bs, int key)
 {
     if(bs == NULL || bs->root == NULL || key == 0)
@@ -140,6 +151,7 @@ int sucessor(bstree *bs, int key)
     return 0;
 }
 
+//return the predecessor of a key inside the binary search tree
 int predecessor(bstree *bs, int key)
 {
     if(bs == NULL || bs->root == NULL || key == 0)
@@ -171,6 +183,7 @@ int predecessor(bstree *bs, int key)
     return 0;
 }
 
+//insert a key on the binary search tree
 void bsinsert(bstree *bs, int key)
 {
     if(bs != NULL && key != 0 && bssearch(bs, key) == 0)
@@ -198,6 +211,7 @@ void bsinsert(bstree *bs, int key)
     }
 }
 
+//makes an inside operation to switch the node u by node v, used by the deletion algorithm
 void transplant(bstree *bs, node *u, node *v)
 {
     if(bs != NULL && u != NULL)
@@ -213,6 +227,7 @@ void transplant(bstree *bs, node *u, node *v)
     }
 }
 
+//delete a key from the binary search tree
 int bsdelete(bstree *bs, int key)
 {
     if(bs == NULL || bs->root == NULL || key == 0)
