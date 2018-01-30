@@ -5,6 +5,11 @@
 typedef struct node node;
 typedef struct linkedlist linkedlist;
 
+/* within this project I've made the following statements:
+       1 - returns 0 if search can't find the key
+       2 - only inserts if the key is not 0
+       3 - returns 0 if the key isn't on the hashtable */
+
 //defines a linkedlist node
 struct node
 {
