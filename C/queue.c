@@ -3,12 +3,14 @@
 
 typedef struct node node;
 
+//defines a queue node
 struct node
 {
     int key;
     node *nxt;
 };
 
+//defines a queue
 struct queue
 {
     node *head;
@@ -17,6 +19,7 @@ struct queue
 
 int queepty(queue *que);
 
+//dynamically create a new node
 node *newnd(int key)
 {
     if(key == 0)
@@ -29,12 +32,14 @@ node *newnd(int key)
     return nd;
 }
 
+//free the dynamically created node
 void freend(node *nd)
 {
     if(nd != NULL)
         free(nd);
 }
 
+//dynamically create a new queue
 queue *newque()
 {
     queue *que = (queue*)malloc(sizeof(queue));
@@ -45,6 +50,7 @@ queue *newque()
     return que;
 }
 
+//free the dynamically created queue
 void freeque(queue *que)
 {
     if(que != NULL)
@@ -57,6 +63,7 @@ void freeque(queue *que)
     }
 }
 
+//add a new key to the queue
 void enqueue(queue *que, int key)
 {
     if(que != NULL)
@@ -78,6 +85,7 @@ void enqueue(queue *que, int key)
     }
 }
 
+//remove a key from the queue
 int dequeue(queue *que)
 {
     if(queepty(que))
@@ -91,6 +99,7 @@ int dequeue(queue *que)
     return key;
 }
 
+//check if the queue is empty
 int queepty(queue *que)
 {
     if(que == NULL || que->head == NULL || que->tail == NULL)
