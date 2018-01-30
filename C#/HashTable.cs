@@ -2,11 +2,19 @@
 
 namespace DataStructures
 {
+	
+	/* within this project I've made the following statements:
+       		1 - returns 0 if search can't find the key
+       		2 - only inserts if the key is not 0
+       		3 - returns 0 if the key isn't on the hashtable 
+       		4 - solved colision by chaining */
+	
 	public class HashTable
 	{
 		private LinkedList[] table;
 		private Int32 size;
 
+		//create a new hashtable with the desired size
 		public HashTable(Int32 size)
 		{
 			if (size > 0)
@@ -22,12 +30,14 @@ namespace DataStructures
 			}
 		}
 
+		//add a key on the linkedlist stored on the hashtable at the index returned by the hashfunction
 		public void Add(Int32 key)
 		{
 			if (key != 0)
 				table[HashFunction(key)].Add(key);
 		}
-
+		
+		//remove a key on the linkedlist stored on the hashtable at the index returned by the hashfunction
 		public Int32 Remove(Int32 key)
 		{
 			if (key != 0)
@@ -35,6 +45,7 @@ namespace DataStructures
 			return 0;
 		}
 
+		//search a key on the linkedlist stored on the hashtable at the index returned by the hashfunction
 		public Boolean Search(Int32 key)
 		{
 			if (key != 0)
@@ -42,6 +53,7 @@ namespace DataStructures
 			return false;
 		}
 
+		//hashfunction of the hashtable
 		private Int32 HashFunction(Int32 key)
 		{
 			return key % size;
