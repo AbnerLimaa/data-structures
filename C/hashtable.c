@@ -8,7 +8,8 @@ typedef struct linkedlist linkedlist;
 /* within this project I've made the following statements:
        1 - returns 0 if search can't find the key
        2 - only inserts if the key is not 0
-       3 - returns 0 if the key isn't on the hashtable */
+       3 - returns 0 if the key isn't on the hashtable 
+       4 - solved colision by chaining */
 
 //defines a linkedlist node
 struct node
@@ -17,7 +18,7 @@ struct node
     node *nxt;
 };
 
-//defines the linkedlist stored on the hashtable to solve colision by chaining
+//defines the linkedlists stored on the hashtable
 struct linkedlist
 {
     node *head;
