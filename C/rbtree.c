@@ -11,7 +11,7 @@
        3 - returns 0 if search can't find the key
        4 - returns 0 by sucessor and predecessor if there is no sucessor/predecessor of the desired key
        5 - only inserts if the key isn't on the tree or is not 0
-       6 - returns 0 if the key isn't on the tree */
+       6 - returns 0 by delete if the key isn't on the tree */
 
 typedef struct node node;
 
