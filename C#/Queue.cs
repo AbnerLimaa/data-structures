@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Library
+namespace DataStructures
 {
-    public class Queue
-    {
+	public class Queue
+	{
 		private Node head;
 		private Node tail;
 
@@ -11,7 +11,7 @@ namespace Library
 		{
 			if (key != 0)
 			{
-				Node node = new Node(key);
+				Node node = new Node(this, key);
 				if (this.Empty())
 				{
 					head = node;
@@ -41,29 +41,6 @@ namespace Library
 			if (head == null || tail == null)
 				return true;
 			return false;
-		}
-    }
-
-	class Node
-	{
-		private Int32 key;
-		private Node next;
-
-		public Int32 Key
-		{
-			get { return key; }
-			set { key = value; }
-		}
-
-		public Node Next
-		{
-			get { return next; }
-			set { next = value; }
-		}
-
-		public Node(Int32 key)
-		{
-			this.key = key;
 		}
 	}
 }

@@ -1,16 +1,13 @@
 ﻿using System;
 
-namespace Library
+namespace DataStructures
 {
-    public class BinarySearchTree
-    {
+	public class BinarySearchTree
+	{
 		private Node root;
 		private Int32 size;
 
-		public BinarySearchTree()
-		{
-			size = 0;
-		}
+		public BinarySearchTree() { size = 0; }
 
 		public Int32 TreeMin()
 		{
@@ -96,7 +93,7 @@ namespace Library
 		{
 			if (key != 0 && SearchNode(key) == null)
 			{
-				Node node = new Node(key);
+				Node node = new Node(this, key);
 				node.Key = key;
 				Node aux = null;
 				Node search = root;
@@ -181,43 +178,6 @@ namespace Library
 				else
 					node = node.Right;
 			return node;
-		}
-    }
-
-	class Node
-	{
-		private Int32 key;
-		private Node parent;
-		private Node left;
-		private Node right;
-
-		public Node(Int32 key)
-		{
-			this.key = key;
-		}
-
-		public Int32 Key
-		{
-			get { return key; }
-			set { key = value; }
-		}
-
-		public Node Parent
-		{
-			get { return parent; }
-			set { parent = value; }
-		}
-
-		public Node Left
-		{
-			get { return left; }
-			set { left = value; }
-		}
-
-		public Node Right
-		{
-			get { return right; }
-			set { right = value; }
 		}
 	}
 }

@@ -1,11 +1,9 @@
 ﻿using System;
 
-namespace Library
+namespace DataStructures
 {
-	internal enum NodeColor { RED = 1, BLACK = 0 }
-
 	public class RedBlackTree
-    {
+	{
 		private Node root;
 		private Node nil;
 		private Int32 size;
@@ -13,7 +11,7 @@ namespace Library
 		public RedBlackTree()
 		{
 			size = 0;
-			nil = new Node();
+			nil = new Node(this);
 			root = nil;
 		}
 
@@ -197,7 +195,7 @@ namespace Library
 		{
 			if (key != 0 && SearchNode(key) == nil)
 			{
-				Node node = new Node(key);
+				Node node = new Node(this, key);
 				node.Key = key;
 				Node aux = nil;
 				Node search = root;
@@ -374,56 +372,6 @@ namespace Library
 				else
 					node = node.Right;
 			return node;
-		}
-	}
-
-	class Node
-	{
-		private Int32 key;
-		private NodeColor color;
-		private Node parent;
-		private Node left;
-		private Node right;
-
-		public Node()
-		{
-			color = NodeColor.BLACK;
-		}
-
-		public Node(Int32 key)
-		{
-			this.key = key;
-			color = NodeColor.BLACK;
-		}
-
-		public Int32 Key
-		{
-			get { return key; }
-			set { key = value; }
-		}
-
-		public NodeColor Color
-		{
-			get { return color; }
-			set { color = value; }
-		}
-
-		public Node Parent
-		{
-			get { return parent; }
-			set { parent = value; }
-		}
-
-		public Node Left
-		{
-			get { return left; }
-			set { left = value; }
-		}
-
-		public Node Right
-		{
-			get { return right; }
-			set { right = value; }
 		}
 	}
 }

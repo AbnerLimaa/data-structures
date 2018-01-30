@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Library
+namespace DataStructures
 {
-    public class HashTable
-    {
+	public class HashTable
+	{
 		private LinkedList[] table;
 		private Int32 size;
 
@@ -46,5 +46,5 @@ namespace Library
 		{
 			return key % size;
 		}
-    }
+	}
 }
