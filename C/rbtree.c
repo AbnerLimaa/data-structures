@@ -5,6 +5,14 @@
 #define RED 1
 #define BLACK 0
 
+/* within this project I've made the following statements:
+       1 - returns 0 by treemin and treemax if there is no key on the red black tree
+       2 - returns NULL by iotwalk if there is no key on the red black tree
+       3 - returns 0 if search can't find the key
+       4 - returns 0 by sucessor and predecessor if there is no sucessor/predecessor of the desired key
+       5 - only inserts if the key isn't on the tree or is not 0
+       6 - returns 0 if the key isn't on the tree */
+
 typedef struct node node;
 
 //defines a red black tree node
