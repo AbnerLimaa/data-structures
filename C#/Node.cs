@@ -1,5 +1,8 @@
 ﻿using System;
 
+/* here you have a class that defines the node used by all data structures and
+   an enum that defines what is BLACK and RED in one node */
+
 namespace DataStructures
 {
 	internal enum NodeColor { RED = 1, BLACK = 0 }
