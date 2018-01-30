@@ -7,6 +7,7 @@
 
 typedef struct node node;
 
+//defines a red black tree node
 struct node
 {
     int key;
@@ -16,6 +17,7 @@ struct node
     node *right;
 };
 
+//defines a red black tree
 struct rbtree
 {
     node *root;
@@ -23,6 +25,7 @@ struct rbtree
     int size;
 };
 
+//dynamically create a new node
 node *newnd()
 {
     node *nd = (node*)malloc(sizeof(node));
@@ -35,12 +38,14 @@ node *newnd()
     return nd;
 }
 
+//free the dynamically created node
 void freend(node *nd)
 {
     if(nd != NULL)
         free(nd);
 }
 
+//dynamically create a new red black tree
 rbtree *newrbtree()
 {
     rbtree *rb = (rbtree*)malloc(sizeof(rbtree));
@@ -52,6 +57,7 @@ rbtree *newrbtree()
     return rb;
 }
 
+//free the dynamically created red black tree
 void freerbtree(rbtree *rb)
 {
     if(rb != NULL)
@@ -64,6 +70,7 @@ void freerbtree(rbtree *rb)
     }
 }
 
+//return the minimum key stored on the red black tree
 int treemin(rbtree *rb)
 {
     if(rb == NULL || rb->root == rb->nil)
@@ -74,6 +81,7 @@ int treemin(rbtree *rb)
     return nd->key;
 }
 
+//return the maximum key stored on the red black tree
 int treemax(rbtree *rb)
 {
     if(rb == NULL || rb->root == rb->nil)
@@ -84,6 +92,7 @@ int treemax(rbtree *rb)
     return nd->key;
 }
 
+//return an array with the keys stored on the red black tree in ascending order
 int *iotwalk(rbtree *rb)
 {
     if(rb == NULL || rb->root == rb->nil)
@@ -102,6 +111,7 @@ int *iotwalk(rbtree *rb)
     return array;
 }
 
+//search for a key stored on the red black tree
 int rbsearch(rbtree *rb, int key)
 {
     if(rb == NULL || rb->root == rb->nil || key == 0)
@@ -117,6 +127,7 @@ int rbsearch(rbtree *rb, int key)
     return 0;
 }
 
+//return the sucessor of a key inside the red black tree
 int sucessor(rbtree *rb, int key)
 {
     if(rb == NULL || rb->root == rb->nil || key == 0)
@@ -148,6 +159,7 @@ int sucessor(rbtree *rb, int key)
     return 0;
 }
 
+//return the sucessor of a key inside the red black tree
 int predecessor(rbtree *rb, int key)
 {
     if(rb == NULL || rb->root == rb->nil || key == 0)
@@ -179,6 +191,7 @@ int predecessor(rbtree *rb, int key)
     return 0;
 }
 
+//executes an inside operation to rotate a node to the left
 void leftrotate(rbtree *rb, node *nd)
 {
     if(rb != NULL && nd != rb->nil)
@@ -199,6 +212,7 @@ void leftrotate(rbtree *rb, node *nd)
     }
 }
 
+//executes an inside operation to rotate a node to the right
 void rightrotate(rbtree *rb, node *nd)
 {
     if(rb != NULL && nd != rb->nil)
@@ -219,6 +233,7 @@ void rightrotate(rbtree *rb, node *nd)
     }
 }
 
+//fix the insertion algorithm to make sure the tree has all the red black tree properties
 void rbinsertfixup(rbtree *rb, node *nd)
 {
     if(rb != NULL && nd != rb->nil)
@@ -275,6 +290,7 @@ void rbinsertfixup(rbtree *rb, node *nd)
     }
 }
 
+//insert a key to the red black tree
 void rbinsert(rbtree *rb, int key)
 {
     if(rb != NULL && key != 0 && rbsearch(rb, key) == 0)
@@ -306,6 +322,7 @@ void rbinsert(rbtree *rb, int key)
     }
 }
 
+//executes an inside operation to switch node u with node v, used by delete algorithm
 void transplant(rbtree *rb, node *u, node *v)
 {
     if(rb != NULL && u != rb->nil)
@@ -320,6 +337,7 @@ void transplant(rbtree *rb, node *u, node *v)
     }
 }
 
+//fix the delete algorithm to make sure the tree has all the red black tree properties
 void rbdeletefixup(rbtree *rb, node *nd)
 {
     if(rb != NULL && nd != rb->nil)
@@ -393,6 +411,7 @@ void rbdeletefixup(rbtree *rb, node *nd)
     }
 }
 
+//delete a key from the red black tree
 int rbdelete(rbtree *rb, int key)
 {
     if(rb == NULL || rb->root == rb->nil || key == 0)
