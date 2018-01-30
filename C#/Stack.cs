@@ -2,10 +2,15 @@
 
 namespace DataStructures
 {
+	
+	/* within this project I've made the following statement:
+       		1 - returns 0 by pop if the stack is empty */
+	
 	public class Stack
 	{
 		private Node top;
-
+		
+		//add a key to the stack
 		public void Push(Int32 key)
 		{
 			if (key != 0)
@@ -15,7 +20,8 @@ namespace DataStructures
 				top = node;
 			}
 		}
-
+		
+		//remove a key from the stack
 		public Int32 Pop()
 		{
 			if (this.Empty())
@@ -25,6 +31,7 @@ namespace DataStructures
 			return key;
 		}
 
+		//checks if the stack is empty
 		private Boolean Empty()
 		{
 			if (top == null)
