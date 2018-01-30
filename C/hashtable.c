@@ -5,17 +5,20 @@
 typedef struct node node;
 typedef struct linkedlist linkedlist;
 
+//defines a linkedlist node
 struct node
 {
     int key;
     node *nxt;
 };
 
+//defines the linkedlist stored on the hashtable to solve colision by chaining
 struct linkedlist
 {
     node *head;
 };
 
+//defines a hashtable
 struct hashtable
 {
     linkedlist **table;
@@ -26,6 +29,7 @@ int lkdlstepty(linkedlist *lkdlst);
 
 int hshfunc(int size, int key);
 
+//dynamically create a new node to some linkedlist of the hashtable
 node *newnd(int key)
 {
     node *nd = (node*)malloc(sizeof(node));
@@ -36,12 +40,14 @@ node *newnd(int key)
     return nd;
 }
 
+//free the node dynamically created
 void freend(node *nd)
 {
     if(nd != NULL)
         free(nd);
 }
 
+//dynamically create a new linkedlist
 linkedlist *newlkdlst()
 {
     linkedlist *lkdlst = (linkedlist*)malloc(sizeof(linkedlist));
@@ -51,6 +57,7 @@ linkedlist *newlkdlst()
     return lkdlst;
 }
 
+//free the dynamically created linkedlist
 void freelkdlst(linkedlist *lkdlst)
 {
     if(lkdlst != NULL)
@@ -66,6 +73,7 @@ void freelkdlst(linkedlist *lkdlst)
     }
 }
 
+//add a key to the linkedlist
 void addlkdlst(linkedlist *lkdlst, int key)
 {
     if(lkdlst != NULL && key != 0)
@@ -84,6 +92,7 @@ void addlkdlst(linkedlist *lkdlst, int key)
     }
 }
 
+//remove a key from the linkedlist
 int remlkdlst(linkedlist *lkdlst, int key)
 {
     if(lkdlstepty(lkdlst) == 1 || key == 0)
@@ -110,6 +119,7 @@ int remlkdlst(linkedlist *lkdlst, int key)
     return 0;
 }
 
+//search a key on the linkedlist
 int searchlkdlst(linkedlist *lkdlst, int key)
 {
     if(lkdlstepty(lkdlst) == 1 || key == 0)
@@ -122,6 +132,7 @@ int searchlkdlst(linkedlist *lkdlst, int key)
     return 0;
 }
 
+//checks if the linkedlist is empty
 int lkdlstepty(linkedlist *lkdlst)
 {
     if(lkdlst == NULL || lkdlst->head == NULL)
@@ -129,6 +140,7 @@ int lkdlstepty(linkedlist *lkdlst)
     return 0;
 }
 
+//dynamically create a new hashtable
 hashtable *newhshtbl(int size)
 {
     hashtable *hshtbl = (hashtable*)malloc(sizeof(hashtable));
@@ -143,6 +155,7 @@ hashtable *newhshtbl(int size)
     return hshtbl;
 }
 
+//free the dynamically created hashtable
 void freehshtbl(hashtable *hshtbl)
 {
     if(hshtbl != NULL && hshtbl->table != NULL)
@@ -155,12 +168,14 @@ void freehshtbl(hashtable *hshtbl)
     }
 }
 
+//add a key on the linkedlist stored on the hashtable at the index returned by the hashfunction
 void addhshtbl(hashtable *hshtbl, int key)
 {
     if(hshtbl != NULL && hshtbl->table != NULL && key != 0)
         addlkdlst(hshtbl->table[hshfunc(hshtbl->size, key)], key);
 }
 
+//remove a key on the linkedlist stored on the hashtable at the index returned by the hashfunction
 int remhshtbl(hashtable *hshtbl, int key)
 {
     if(hshtbl != NULL && hshtbl->table != NULL && key != 0)
@@ -168,6 +183,7 @@ int remhshtbl(hashtable *hshtbl, int key)
     return 0;
 }
 
+//search a key on the linkedlist stored on the hashtable at the index returned by the hashfunction
 int searchhshtbl(hashtable *hshtbl, int key)
 {
     if(hshtbl != NULL && hshtbl->table != NULL && key != 0)
@@ -176,6 +192,7 @@ int searchhshtbl(hashtable *hshtbl, int key)
     return 0;
 }
 
+//hashfunction of the hashtable
 int hshfunc(int size, int key)
 {
     return key % size;
