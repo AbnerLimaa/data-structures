@@ -3,6 +3,7 @@
 
 typedef struct node node;
 
+//defines a linkedlist node
 struct node
 {
     int key;
@@ -10,6 +11,7 @@ struct node
     node *prev;
 };
 
+//defines a linkedlist
 struct linkedlist
 {
     node *left;
@@ -18,6 +20,7 @@ struct linkedlist
 
 int lkdlstepty(linkedlist *lkdlst);
 
+//dynamically create a new node
 node *newnd(int key)
 {
     node *nd = (node*)malloc(sizeof(node));
@@ -29,12 +32,14 @@ node *newnd(int key)
     return nd;
 }
 
+//free the dynamically created node
 void freend(node *nd)
 {
     if(nd != NULL)
         free(nd);
 }
 
+//dynamically create a new linkedlist
 linkedlist *newlkdlst()
 {
     linkedlist *lkdlst = (linkedlist*)malloc(sizeof(linkedlist));
@@ -45,6 +50,7 @@ linkedlist *newlkdlst()
     return lkdlst;
 }
 
+//free the dynamically created linkedlist
 void freelkdlst(linkedlist *lkdlst)
 {
     if(lkdlst != NULL)
@@ -57,6 +63,7 @@ void freelkdlst(linkedlist *lkdlst)
     }
 }
 
+//add a key on the left of the linkedlist
 void addleftlkdlst(linkedlist *lkdlst, int key)
 {
     if(lkdlst != NULL && key != 0)
@@ -79,6 +86,7 @@ void addleftlkdlst(linkedlist *lkdlst, int key)
     }
 }
 
+//add a key on the right of the linkedlist
 void addrightlkdlst(linkedlist *lkdlst, int key)
 {
     if(lkdlst != NULL && key != 0)
@@ -101,6 +109,7 @@ void addrightlkdlst(linkedlist *lkdlst, int key)
     }
 }
 
+//remove a key from the left of the linkedlist
 int remleftlkdlst(linkedlist *lkdlst)
 {
     if(lkdlstepty(lkdlst))
@@ -116,6 +125,7 @@ int remleftlkdlst(linkedlist *lkdlst)
     return key;
 }
 
+//remove a key from the right of the linkedlist
 int remrightlkdlst(linkedlist *lkdlst)
 {
     if(lkdlstepty(lkdlst))
@@ -131,6 +141,7 @@ int remrightlkdlst(linkedlist *lkdlst)
     return key;
 }
 
+//remove a key passed as parameter from the linkedlist
 int remlkdlst(linkedlist *lkdlst, int key)
 {
     if(lkdlstepty(lkdlst) == 1 || key == 0)
@@ -169,6 +180,7 @@ int remlkdlst(linkedlist *lkdlst, int key)
     return 0;
 }
 
+//search if a key is on the linkedlist
 int searchlkdlst(linkedlist *lkdlst, int key)
 {
     if(lkdlstepty(lkdlst) == 1 || key == 0)
@@ -181,6 +193,7 @@ int searchlkdlst(linkedlist *lkdlst, int key)
     return 0;
 }
 
+//checks if the linkedlist is empty
 int lkdlstepty(linkedlist *lkdlst)
 {
     if(lkdlst == NULL || lkdlst->left == NULL || lkdlst->right == NULL)
