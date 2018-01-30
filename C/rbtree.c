@@ -159,7 +159,7 @@ int sucessor(rbtree *rb, int key)
     return 0;
 }
 
-//return the sucessor of a key inside the red black tree
+//return the predecessor of a key inside the red black tree
 int predecessor(rbtree *rb, int key)
 {
     if(rb == NULL || rb->root == rb->nil || key == 0)
