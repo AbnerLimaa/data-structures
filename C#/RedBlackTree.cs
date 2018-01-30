@@ -2,12 +2,22 @@
 
 namespace DataStructures
 {
+	
+	/* within this project I've made the following statements:
+       		1 - returns 0 by treemin and treemax if there is no key on the red black tree
+       		2 - returns NULL by iotwalk if there is no key on the red black tree
+       		3 - returns 0 if search can't find the key
+       		4 - returns 0 by sucessor and predecessor if there is no sucessor/predecessor of the desired key
+       		5 - only inserts if the key isn't on the tree or is not 0
+       		6 - returns 0 by delete if the key isn't on the tree */
+	
 	public class RedBlackTree
 	{
 		private Node root;
 		private Node nil;
 		private Int32 size;
 
+		//create a new red black tree
 		public RedBlackTree()
 		{
 			size = 0;
@@ -15,6 +25,7 @@ namespace DataStructures
 			root = nil;
 		}
 
+		//return the minimum key stored on the red black tree
 		public Int32 TreeMin()
 		{
 			if (root == nil)
@@ -25,6 +36,7 @@ namespace DataStructures
 			return node.Key;
 		}
 
+		//return the maximum key stored on the red black tree
 		public Int32 TreeMax()
 		{
 			if (root == nil)
@@ -34,7 +46,8 @@ namespace DataStructures
 				node = node.Right;
 			return node.Key;
 		}
-
+		
+		//return an array with the keys stored on the red black tree in ascending order
 		public Int32[] InOrderTreeWalk()
 		{
 			if (root == nil)
@@ -49,6 +62,7 @@ namespace DataStructures
 			return numbers;
 		}
 
+		//return the sucessor of a key inside the red black tree
 		public Int32 Sucessor(Int32 key)
 		{
 			Node node = SearchNode(key);
@@ -72,6 +86,7 @@ namespace DataStructures
 			return 0;
 		}
 
+		//return the predecessor of a key inside the red black tree
 		public Int32 Predecessor(Int32 key)
 		{
 			Node node = SearchNode(key);
@@ -95,6 +110,7 @@ namespace DataStructures
 			return 0;
 		}
 
+		//executes an inside operation to rotate a node to the left
 		private void LeftRotate(Node node)
 		{
 			if (node != nil)
@@ -115,6 +131,7 @@ namespace DataStructures
 			}
 		}
 
+		//executes an inside operation to rotate a node to the right
 		private void RightRotate(Node node)
 		{
 			if (node != nil)
@@ -135,6 +152,7 @@ namespace DataStructures
 			}
 		}
 
+		//fix the insertion algorithm to make sure the tree has all the red black tree properties
 		private void InsertFixUp(Node node)
 		{
 			if (node != nil)
@@ -191,6 +209,7 @@ namespace DataStructures
 			}
 		}
 
+		//insert a key to the red black tree
 		public void Insert(Int32 key)
 		{
 			if (key != 0 && SearchNode(key) == nil)
@@ -222,6 +241,7 @@ namespace DataStructures
 			}
 		}
 
+		//executes an inside operation to switch node u with node v, used by delete algorithm
 		private void Transplant(Node u, Node v)
 		{
 			if (u != nil)
@@ -236,6 +256,7 @@ namespace DataStructures
 			}
 		}
 
+		//fix the delete algorithm to make sure the tree has all the red black tree properties
 		private void DeleteFixUp(Node node)
 		{
 			if (node != nil)
@@ -309,6 +330,7 @@ namespace DataStructures
 			}
 		}
 
+		//delete a key from the red black tree
 		public Int32 Delete(Int32 key)
 		{
 			Node node = SearchNode(key);
@@ -354,6 +376,7 @@ namespace DataStructures
 			return remKey;
 		}
 
+		//search for a key stored on the red black tree
 		public Boolean Search(Int32 key)
 		{
 			if (SearchNode(key) != nil)
@@ -361,6 +384,7 @@ namespace DataStructures
 			return false;
 		}
 
+		//return the Node if it is on the red black tree or NULL if it isn't
 		private Node SearchNode(Int32 key)
 		{
 			if (key == 0 || root == nil)
