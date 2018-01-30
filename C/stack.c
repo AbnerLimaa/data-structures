@@ -3,6 +3,9 @@
 
 typedef struct node node;
 
+/* within this project I've made the following statement:
+       1 - returns 0 by pop if the stack is empty */
+
 //defines an stack node
 struct node
 {
