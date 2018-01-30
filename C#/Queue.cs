@@ -2,11 +2,16 @@
 
 namespace DataStructures
 {
+	
+	/* within this project I've made the following statement:
+       		1 - returns 0 by dequeue if the queue is empty */
+	
 	public class Queue
 	{
 		private Node head;
 		private Node tail;
 
+		//add a new key to the queue
 		public void Enqueue(Int32 key)
 		{
 			if (key != 0)
@@ -25,6 +30,7 @@ namespace DataStructures
 			}
 		}
 
+		//remove a key from the queue
 		public Int32 Dequeue()
 		{
 			if (this.Empty())
@@ -36,6 +42,7 @@ namespace DataStructures
 			return key;
 		}
 
+		//check if the queue is empty
 		private Boolean Empty()
 		{
 			if (head == null || tail == null)
