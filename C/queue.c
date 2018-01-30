@@ -3,6 +3,9 @@
 
 typedef struct node node;
 
+/* within this project I've made the following statement:
+       1 - returns 0 if the queue is empty */
+
 //defines a queue node
 struct node
 {
